@@ -1,5 +1,5 @@
 import {gitDiffFilesOnly, gitDiffToObjectListProcessor} from "../git";
-import {manualStepFilter, changeObject} from "../sfms";
+import {manualStepFilter, changeObject, outputManualSteps} from "../sfms";
 
 export const command = 'find';
 export const desc = 'Find manual steps introduced in a single commit';
@@ -11,5 +11,7 @@ export const desc = 'Find manual steps introduced in a single commit';
 export const handler = async (argv) => {
     const gitDiffOutput = await gitDiffFilesOnly();
     const diffList: changeObject[] = gitDiffToObjectListProcessor(gitDiffOutput);
-    const manualSteps = diffList.filter(manualStepFilter);
+    const manualSteps: changeObject[] = diffList.filter(manualStepFilter);
+    const output: string = outputManualSteps(manualSteps);
+    console.log(output);
 };

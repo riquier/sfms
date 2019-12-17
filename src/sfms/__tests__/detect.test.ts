@@ -1,4 +1,4 @@
-import {changeObject, manualStepFilter} from "../detect";
+import {changeObject, manualStepFilter} from "..";
 import {GitFileStatus} from "../../git";
 
 describe('detect', () => {
