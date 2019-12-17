@@ -1,0 +1,1 @@
+export {manualStepFilter, changeObject} from './detect';
