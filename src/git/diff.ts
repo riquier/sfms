@@ -13,13 +13,6 @@ export const gitDiffFilesOnly = async (oldCommit: string = 'head', newCommit: st
     const gitDifCommand: string = `git diff ${oldCommit} ${newCommit} --name-status`;
     const options: ExecOptions = {cwd};
 
-    const { stdout, stderr } = await execPromise(gitDifCommand, options);
-
-    // todo process error
-    if(stderr){
-        console.error(stderr);
-        throw new Error();
-    }
-
+    const { stdout } = await execPromise(gitDifCommand, options);
     return stdout;
 };
