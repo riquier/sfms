@@ -1,8 +1,15 @@
 {
   "name": "manual",
   "version": "0.1.0",
-  "main": "index.js",
-  "license": "UNLICENSED",
+  "description": "a tool for Salesforce SFDX projects to evaluate manual step creation",
+  "keywords": ["sfdx", "salesforce", "apex"],
+  "bin" : "dist/index.js",
+  "license": "MIT",
+  "author": "Marcus Riquier <marcus.riquier@gmail.com>",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/riquier/sfms.git"
+  },
   "scripts": {
     "clean": "rimraf dist coverage",
     "type-check": "tsc --noEmit",
