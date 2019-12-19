@@ -1,33 +1,38 @@
-import {gitDiffFilesOnly, gitDiffToObjectListProcessor} from "../git";
-import {manualStepFilter, changeObject, outputManualSteps} from "../sfms";
-import {Argv} from "yargs";
+import {Argv} from 'yargs';
+import {gitDiffFilesOnly, gitDiffToObjectListProcessor} from '../git';
+import {manualStepFilter, changeObject, outputManualSteps} from '../sfms';
 
 export const command = 'find [original] [current]';
 export const desc = 'Find manual steps introduced in a single commit';
-export const builder = (yargs: Argv): Argv => yargs
+export const builder = (yargs: Argv): Argv =>
+  yargs
     .positional('original', {
-        describe: 'the original git reference',
-        default: 'HEAD'
+      describe: 'the original git reference',
+      default: 'HEAD',
     })
     .positional('current', {
-        describe: 'the current git reference',
-        default: '',
+      describe: 'the current git reference',
+      default: '',
     })
     .option('cwd', {
-        description: 'working directory of git repository',
-        default: '.'
+      description: 'working directory of git repository',
+      default: '.',
     });
 
 type FindArguments = {
-    original: string,
-    current: string,
-    cwd: string,
-}
+  original: string;
+  current: string;
+  cwd: string;
+};
 
 export const handler = async (argv: FindArguments) => {
-    const gitDiffOutput = await gitDiffFilesOnly(argv.current, argv.original, argv.cwd);
-    const diffList: changeObject[] = gitDiffToObjectListProcessor(gitDiffOutput);
-    const manualSteps: changeObject[] = diffList.filter(manualStepFilter);
-    const output: string = outputManualSteps(manualSteps);
-    console.log(output);
+  const gitDiffOutput = await gitDiffFilesOnly(
+    argv.current,
+    argv.original,
+    argv.cwd,
+  );
+  const diffList: changeObject[] = gitDiffToObjectListProcessor(gitDiffOutput);
+  const manualSteps: changeObject[] = diffList.filter(manualStepFilter);
+  const output: string = outputManualSteps(manualSteps);
+  console.log(output);
 };

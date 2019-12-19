@@ -9,10 +9,14 @@ const execPromise = util.promisify(exec);
  * @param newCommit
  * @param cwd
  */
-export const gitDiffFilesOnly = async (oldCommit: string = 'head', newCommit: string = '', cwd: string = '.'): Promise<string> => {
-    const gitDifCommand: string = `git diff ${oldCommit} ${newCommit} --name-status`;
-    const options: ExecOptions = {cwd};
+export const gitDiffFilesOnly = async (
+  oldCommit = 'head',
+  newCommit = '',
+  cwd = '.',
+): Promise<string> => {
+  const gitDifCommand = `git diff ${oldCommit} ${newCommit} --name-status`;
+  const options: ExecOptions = {cwd};
 
-    const { stdout } = await execPromise(gitDifCommand, options);
-    return stdout;
+  const {stdout} = await execPromise(gitDifCommand, options);
+  return stdout;
 };

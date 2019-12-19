@@ -2,24 +2,37 @@
   "name": "manual",
   "version": "0.1.0",
   "description": "a tool for Salesforce SFDX projects to evaluate manual step creation",
-  "keywords": ["sfdx", "salesforce", "apex"],
-  "bin" : "dist/index.js",
+  "keywords": [
+    "sfdx",
+    "salesforce",
+    "apex"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riquier/sfms.git"
+  },
   "license": "MIT",
   "author": "Marcus Riquier <marcus.riquier@gmail.com>",
-  "repository": {
-    "type" : "git",
-    "url" : "https://github.com/riquier/sfms.git"
-  },
+  "bin": "dist/index.js",
   "scripts": {
-    "clean": "rimraf dist coverage",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "yarn type-check -- --watch",
     "build": "yarn build:types && yarn build:js",
-    "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
-    "lint": "eslint ./**/*.ts",
-    "lint-fix": "lint -- --fix",
-    "test": "yarn jest"
+    "build:types": "tsc --emitDeclarationOnly",
+    "clean": "rimraf dist coverage",
+    "format": "prettier --write \"**/*.{ts,json,md,yml,js}\"",
+    "lint": "yarn lint:md && yarn lint:js",
+    "lint:fix": "yarn lint:md --fix && yarn lint:js --fix",
+    "lint:js": "eslint . --ext .js,.ts",
+    "lint:md": "markdownlint *.md **/*.md --ignore node_modules",
+    "secruityaudit": "audit-ci --moderate",
+    "test": "yarn jest",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "yarn type-check -- --watch"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:fix && pretty-quick --staged"
+    }
   },
   "dependencies": {
     "@types/jest": "^24.0.23",
@@ -39,11 +52,22 @@
     "@babel/runtime": "^7.7.6",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
+    "audit-ci": "^2.4.2",
     "babel-jest": "^24.9.0",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
+    "markdownlint": "^0.18.0",
+    "markdownlint-cli": "^0.20.0",
+    "prettier": "^1.19.1",
+    "prettier-eslint": "^9.0.1",
+    "prettier-plugin-packagejson": "^2.0.6",
+    "pretty-quick": "^2.0.1",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.2.0",
     "typescript": "^3.3.3"
