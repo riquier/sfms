@@ -26,6 +26,7 @@
     "lint:fix": "yarn lint:md --fix && yarn lint:js --fix",
     "lint:js": "eslint . --ext .js,.ts",
     "lint:md": "markdownlint *.md **/*.md --ignore node_modules",
+    "prepare": "yarn build",
     "prepublishOnly": "yarn lint && yarn test",
     "prepublish": "yarn build",
     "secruityaudit": "audit-ci --moderate",
