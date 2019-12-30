@@ -24,6 +24,7 @@
     "lint:fix": "yarn lint:md --fix && yarn lint:js --fix",
     "lint:js": "eslint . --ext .js,.ts",
     "lint:md": "markdownlint *.md **/*.md --ignore node_modules",
+    "postinstall": "yarn build",
     "secruityaudit": "audit-ci --moderate",
     "test": "yarn jest",
     "type-check": "tsc --noEmit",
