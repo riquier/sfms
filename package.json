@@ -13,22 +13,24 @@
   },
   "license": "MIT",
   "author": "Marcus Riquier <marcus.riquier@gmail.com>",
-  "bin": "dist/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "types": "lib/index.d.ts",
+  "bin": "lib/index.js",
   "scripts": {
-    "build": "yarn build:types && yarn build:js",
-    "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
-    "build:types": "tsc --emitDeclarationOnly",
-    "clean": "rimraf dist coverage",
+    "build": "tsc",
+    "clean": "rimraf lib coverage",
     "format": "prettier --write \"**/*.{ts,json,md,yml,js}\"",
     "lint": "yarn lint:md && yarn lint:js",
     "lint:fix": "yarn lint:md --fix && yarn lint:js --fix",
     "lint:js": "eslint . --ext .js,.ts",
     "lint:md": "markdownlint *.md **/*.md --ignore node_modules",
-    "postinstall": "yarn build",
+    "prepublishOnly": "yarn lint && yarn test",
+    "prepublish": "yarn build",
     "secruityaudit": "audit-ci --moderate",
     "test": "yarn jest",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "yarn type-check -- --watch"
+    "preversion": "yarn lint"
   },
   "husky": {
     "hooks": {
