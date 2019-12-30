@@ -11,13 +11,13 @@ Salesforce Manual Steps Tool for Managed Packages using SFDX
 Install sfms using [`yarn`](https://yarnpkg.com/en/package/sfms):
 
 ```bash
-yarn add --dev sfms
+yarn add --dev https://github.com/riquier/sfms.git
 ```
 
 Or [`npm`](https://www.npmjs.com/):
 
 ```bash
-npm install --save-dev sfms
+npm install --save-dev https://github.com/riquier/sfms.git
 ```
 
 Note: Jest documentation uses `yarn` commands, but `npm` will also work. You can compare `yarn` and `npm` commands in the [yarn docs, here](https://yarnpkg.com/en/docs/migrating-from-npm#toc-cli-commands-comparison).

@@ -1,5 +1,5 @@
 {
-  "name": "manual",
+  "name": "sfms",
   "version": "0.1.0",
   "description": "a tool for Salesforce SFDX projects to evaluate manual step creation",
   "keywords": [
