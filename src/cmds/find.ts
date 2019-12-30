@@ -25,7 +25,7 @@ type FindArguments = {
   cwd: string;
 };
 
-export const handler = async (argv: FindArguments) => {
+export const handler = async (argv: FindArguments): Promise<void> => {
   const gitDiffOutput = await gitDiffFilesOnly(
     argv.current,
     argv.original,
@@ -34,5 +34,6 @@ export const handler = async (argv: FindArguments) => {
   const diffList: changeObject[] = gitDiffToObjectListProcessor(gitDiffOutput);
   const manualSteps: changeObject[] = diffList.filter(manualStepFilter);
   const output: string = outputManualSteps(manualSteps);
+  // eslint-disable-next-line no-console
   console.log(output);
 };

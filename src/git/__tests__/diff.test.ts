@@ -1,6 +1,7 @@
 import {gitDiffFilesOnly} from '..';
 
-const child_process = require('child_process');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const childProcess = require('child_process');
 
 jest.mock('child_process', () => ({
   exec: jest.fn(),
@@ -8,24 +9,24 @@ jest.mock('child_process', () => ({
 
 describe('diff', () => {
   describe('gitDiffFilesOnly', () => {
-    it('can handle changes', () => {
-      child_process.exec.mockResolvedValueOnce({
+    it('can handle changes', async () => {
+      childProcess.exec.mockResolvedValueOnce({
         stdout:
           'A       force-app/main/default/flows/DEX_Circumstances_SCORE_Assessment.flow-meta.xml',
       });
       const output = gitDiffFilesOnly();
-      expect(output).resolves.toEqual(
+      await expect(output).resolves.toEqual(
         'A       force-app/main/default/flows/DEX_Circumstances_SCORE_Assessment.flow-meta.xml',
       );
-      expect(child_process.exec).toHaveBeenCalled();
+      expect(childProcess.exec).toHaveBeenCalled();
     });
-    it('can handle no changes', () => {
-      child_process.exec.mockResolvedValueOnce({
+    it('can handle no changes', async () => {
+      childProcess.exec.mockResolvedValueOnce({
         stdout: '',
       });
       const output = gitDiffFilesOnly();
-      expect(output).resolves.toEqual('');
-      expect(child_process.exec).toHaveBeenCalled();
+      await expect(output).resolves.toEqual('');
+      expect(childProcess.exec).toHaveBeenCalled();
     });
   });
 });

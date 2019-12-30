@@ -14,7 +14,7 @@ const newLineRegex = /\r?\n/;
  *  Group3: "flow"
  *  Group4: "DEX_Circumstances_SCORE_Assessment.flow-meta.xml"
  * */
-const sfdxChangeRegex = /^([a-z]+)[ \t]+(force-app\/main\/[^\/]+)\/([^\/]+)\/(.+)$/i;
+const sfdxChangeRegex = /^([a-z]+)[ \t]+(force-app\/main\/[^/]+)\/([^/]+)\/(.+)$/i;
 
 /**
  *  Splits into 1 group
@@ -24,17 +24,6 @@ const sfdxChangeRegex = /^([a-z]+)[ \t]+(force-app\/main\/[^\/]+)\/([^\/]+)\/(.+
  *  Group1: "force-app/main/default/flows/DEX_Circumstances_SCORE_Assessment.flow-meta.xml"
  */
 const pathRegex = /^[a-z]+[ \t]+(force-app\/.+)$/i;
-
-/**
- * Processes the results of a git diff with teh --name-status flag and returns
- * a list of objects detailing the change
- * @param stdout
- */
-export const gitDiffToObjectListProcessor = (stdout: string): changeObject[] =>
-  stdout
-    .split(newLineRegex)
-    .filter(gitDiffLineValidator)
-    .map(gitDiffLineToObjectConverter);
 
 /**
  * Checks if line matches sfdxChangeRegex
@@ -61,3 +50,14 @@ export const gitDiffLineToObjectConverter = (line: string): changeObject => {
     path: pathParts[1],
   };
 };
+
+/**
+ * Processes the results of a git diff with teh --name-status flag and returns
+ * a list of objects detailing the change
+ * @param stdout
+ */
+export const gitDiffToObjectListProcessor = (stdout: string): changeObject[] =>
+  stdout
+    .split(newLineRegex)
+    .filter(gitDiffLineValidator)
+    .map(gitDiffLineToObjectConverter);
