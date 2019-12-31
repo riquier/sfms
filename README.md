@@ -2,7 +2,11 @@
 
 Salesforce Manual Steps Tool for Managed Packages using SFDX
 
+[![npm package](https://img.shields.io/npm/v/sfms)](https://www.npmjs.com/package/sfms)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code-of-conduct.md)
+![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+[![Dependencies](https://david-dm.org/riquier/sfms/master/status.svg)](https://david-dm.org/riquier/sfms/master)
+[![DevDependencies](https://david-dm.org/riquier/sfms/master/dev-status.svg)](https://david-dm.org/riquier/sfms/master)
 
 ## Getting Started
 
@@ -11,20 +15,24 @@ Salesforce Manual Steps Tool for Managed Packages using SFDX
 Install sfms using [`yarn`](https://yarnpkg.com/en/package/sfms):
 
 ```bash
-yarn add --dev https://github.com/riquier/sfms.git
+yarn add --dev sfms
 ```
 
 Or [`npm`](https://www.npmjs.com/):
 
 ```bash
-npm install --save-dev https://github.com/riquier/sfms.git
+npm install --save-dev sfms
 ```
 
 Note: Jest documentation uses `yarn` commands, but `npm` will also work. You can compare `yarn` and `npm` commands in the [yarn docs, here](https://yarnpkg.com/en/docs/migrating-from-npm#toc-cli-commands-comparison).
 
 ## Running from the Command Line
 
-TBA
+Run the following to compare the current branch to master
+
+```bash
+sfms find
+```
 
 ## Contributing
 
