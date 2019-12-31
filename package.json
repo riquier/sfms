@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@types/jest": "^24.0.23",
-    "@types/node": "^12.12.17",
+    "@types/node": "^13.1.2",
     "@types/yargs": "^13.0.3",
     "yargs": "^15.0.2"
   },
