@@ -6,6 +6,7 @@ February 2020
 
 - relaxed redux for finding metadata files to include all paths instead of only force-app/main/default
 - updated dependencies
+- add CI through github workflows
 
 ## 0.2.0
 
