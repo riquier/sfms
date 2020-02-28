@@ -1,5 +1,12 @@
 # Versions
 
+## 0.3.0
+
+February 2020
+
+- relaxed redux for finding metadata files to include all paths instead of only force-app/main/default
+- updated dependencies
+
 ## 0.2.0
 
 December 2019
