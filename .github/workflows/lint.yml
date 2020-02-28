@@ -1,4 +1,4 @@
-name: Jest Unit Tests
+name: Linting
 
 on:
   pull_request:
@@ -20,4 +20,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
-      - run: yarn run test
+      - run: yarn run lint
