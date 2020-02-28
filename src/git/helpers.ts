@@ -14,7 +14,7 @@ const newLineRegex = /\r?\n/;
  *  Group3: "flow"
  *  Group4: "DEX_Circumstances_SCORE_Assessment.flow-meta.xml"
  * */
-const sfdxChangeRegex = /^([a-z]+)[ \t]+(force-app\/main\/[^/]+)\/([^/]+)\/(.+)$/i;
+const sfdxChangeRegex = /^([a-z]+)[ \t]+(.+\/[^/]+)\/([^/]+)\/(.+)$/i;
 
 /**
  *  Splits into 1 group
@@ -23,7 +23,7 @@ const sfdxChangeRegex = /^([a-z]+)[ \t]+(force-app\/main\/[^/]+)\/([^/]+)\/(.+)$
  *
  *  Group1: "force-app/main/default/flows/DEX_Circumstances_SCORE_Assessment.flow-meta.xml"
  */
-const pathRegex = /^[a-z]+[ \t]+(force-app\/.+)$/i;
+const pathRegex = /^[a-z]+[ \t]+(.+\/.+)$/i;
 
 /**
  * Checks if line matches sfdxChangeRegex
