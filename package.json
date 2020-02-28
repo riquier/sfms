@@ -19,6 +19,9 @@
   "types": "lib/index.d.ts",
   "bin": "lib/index.js",
   "scripts": {
+    "audit": "yarn run audit:liscence && yarn run audit:secruity",
+    "audit:liscence": "yarn license-checker --production --summary --failOn \"Network Protective; Strongly Protective; Weakly Protective\"",
+    "audit:secruity": "audit-ci --moderate",
     "build": "tsc",
     "clean": "rimraf lib coverage",
     "format": "prettier --write \"**/*.{ts,json,md,yml,js}\"",
@@ -29,7 +32,6 @@
     "prepare": "yarn build",
     "prepublishOnly": "yarn lint && yarn test",
     "prepublish": "yarn build",
-    "secruityaudit": "audit-ci --moderate",
     "test": "yarn jest",
     "preversion": "yarn lint"
   },
@@ -66,6 +68,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.3",
     "jest": "25.1.0",
+    "license-checker": "^25.0.1",
     "markdownlint": "^0.19.0",
     "markdownlint-cli": "^0.22.0",
     "prettier": "^1.19.1",

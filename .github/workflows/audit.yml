@@ -1,4 +1,4 @@
-name: Linting
+name: Audits
 
 on:
   pull_request:
@@ -20,5 +20,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
-      - run: yarn run lint:js
-      - run: yarn run lint:md
+      - run: yarn run audit:secruity
+      - run: yarn run audit:liscence
